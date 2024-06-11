@@ -22,6 +22,7 @@ app.post("/signin", (req, res) => {
         id: 1
     }, JWT_SECRET);
     res.cookie("token", token);
+    // will put the cookie in the set-cookie header
     res.send("Logged in!");
 });
 
@@ -36,7 +37,7 @@ app.get("/user", (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-    res.cookie("token", "ads");
+    res.cookie("token", "");
     res.json({
         message: "Logged out!"
     })
@@ -47,4 +48,4 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../src/index.html"))
 })
 
-app.listen(3000);
+app.listen(3004);
